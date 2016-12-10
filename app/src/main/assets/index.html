@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RAEFox</title>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, user-scalable=no" name="viewport">
+        <link href="js/camaLESS/colorPicker/index.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/headers.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/drawer.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/input_areas.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/toolbars.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/confirm.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/tabs.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/scrolling.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/lists.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/buttons.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/switches.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/progress_activity.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/util.css" rel="stylesheet" type="text/css">
+		<link href="css/BB/fonts.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/transitions.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/icons/styles/action_icons.css" rel="stylesheet" type="text/css">
+        <link href="css/BB/style/icons.css" rel="stylesheet" type="text/css">
+        <link href="css/style.less" rel="stylesheet/less" type="text/css">
+        <script type="text/javascript">
+			less = {
+				env: 'production',
+				async: false,
+				globalVars: {
+					background: '#151515',
+					foreground: '#BBB',
+					links: '#8AF',
+					linksBackground: 'rgba(87, 187, 255, 0.2)',
+					listsHeader: '#FFAA15'
+				}
+			};
+		</script>
+        <script src="js/less-2.7.1.min.js"></script>
+        <link rel="resource" type="application/l10n" href="locales/locales.ini" />
+        <script type="application/javascript" src="js/l10n.js"></script>
+        <link rel="resource" type="application/l10n" href="locales/date.ini" />
+        <script type="text/javascript" src="js/database.js"></script>
+		<script type="application/javascript" src="js/l10n_date.js"></script>
+        <script type="text/javascript" src="js/localize_placeholder.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/wordsList.js"></script>
+		<script type="text/javascript" src="js/history.js"></script>
+        <script type="text/javascript" src="js/camaLESS/camaLESS.js"></script>
+        <script type="text/javascript" src="js/color_themes.js"></script>
+		<script type="text/javascript" src="js/camaLESS/colorPicker/javascript_implementation/jsColorPicker.min.js"></script>
+        <link href="js/camaLESS/camaLESS.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <section id="opts" data-type="sidebar">
+            <header>
+                <h1 data-l10n-id="options">Options</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li class="switchInOptions">
+                        <label id="autosaveLabel" class="pack-switch">
+                            <input id="autosaveInput" type="checkbox">
+                            <span class="labelOptions" data-l10n-id="autosaveHistory">Autosave history</span>
+                        </label>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="#panel1" id="showThemes" data-l10n-id="themes">Color themes</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#panel1" id="showAbout" data-l10n-id="about">About RAEfox</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section id="drawer" class="mainDrawer" role="region">
+            <header id="header">
+                <a href="#panel1" onclick="return back();"><span class="icon icon-menu">hide sidebar</span></a>
+                <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+                <menu id="menuEdit" type="toolbar" class="hidden">
+                    <a id="editHistoryButton" href="#" onclick="return changeHistoryEditMode(true);"><span class="icon icon-edit">edit</span></a>
+                    <button id="noEditHistoryButton" type="button" onclick="return changeHistoryEditMode(false);" class="hidden" data-l10n-id="done">Done</button>
+                </menu>
+                <h1>RAEfox</h1>
+            </header>
+            
+            <!-- Tabs -->
+            <ul id="tabs" role="tablist" data-items="3" class="bb-tablist bottom">
+                <li id="panel1" role="presentation" class="darkTabList">
+                    <a id="tab1" href="#panel1" onclick="changeTab(1);" class="tabIcon" role="tab" aria-controls="main1"><i class="fa fa-search"></i></a>
+                    <div id="main1" class="bb-tabpanel" role="tabpanel" aria-labelledby="tab1">
+                        <form role="search" id="searchForm">
+							<button type="submit" disabled="disabled" data-l10n-id="search" id="searchButton">Search</button>
+							<p>
+								<input autocomplete="off" type="text" id="inputSearch" data-l10n-id="searchPlace" placeholder="Search..." required>
+								<button id="resetSearch" onclick="clearInput(document.getElementById('inputSearch'));" type="reset">Clear</button>
+							</p>
+						</form>
+						<ul id="suggestions" class="suggestionsUl hidden"></ul>
+						<div class="mainContent allwaysHeaderContent">
+							<div id="definitions" class="definitionsContainer"></div>
+                            <div role="toolbar" id="iframeNavigation">
+                                <ul class="leftIcons">
+                                    <li><button disabled="disabled" id="iframeBack" data-l10n-id="back" class="action-icon browser-back">Back</button></li>
+                                    <li><button disabled="disabled" id="iframeForward" data-l10n-id="forward" class="action-icon browser-forward">Forward</button></li>
+                                </ul>
+                                <div>
+                                    <button onclick="removeWordFromHistory(searches[indexSearches]);" role="button" id="removeWordFromHistory" data-l10n-id="removeWordFromHistory" class="danger hidden historyButton">Remove word from history</button>
+                                    <button onclick="addWordToHistory(searches[indexSearches]);" role="button" id="addWordToHistory" data-l10n-id="addWordToHistory" class="recommend hidden historyButton">Add word to history</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id="panel2" role="presentation" class="darkTabList">
+                    <a id="tab2" href="#panel2" onclick="changeTab(2);" class="tabIcon" role="tab" aria-controls="main2"><i class="fa fa-clock-o fa-rotate-90"></i></a>
+                    <div id="main2" class="bb-tabpanel" role="tabpanel" aria-labelledby="tab2">
+                        <div class="topHeader">
+							<h1 data-l10n-id="history">History <span id="historyCount">(0)</span></h1>
+						</div>
+						<div class="mainContent allwaysHeaderContent withoutNavigation">
+							<button onclick="confirmRemoveHistorySelected();" role="button" style="text-align: center !important;" id="removeSelectedFromHistory" data-l10n-id="removeSelected" class="danger hidden">Remove selected</button>
+                            <button onclick="confirmRemoveAllHistoryElements();" role="button" style="text-align: center !important;" id="removeAllFromHistory" data-l10n-id="removeAll" class="danger hidden">Remove all</button>
+							<section id="historyList" data-type="list"></section>
+                        </div>
+                    </div>
+                </li>
+                <li id="panel3" role="presentation" class="darkTabList">
+                    <a id="tab3" href="#panel3" onclick="changeTab(3);" class="tabIcon" role="tab" aria-controls="main3"><i class="fa fa-sort-alpha-asc"></i></a>
+                    <div id="main3" class="bb-tabpanel" role="tabpanel" aria-labelledby="tab3">
+                        <div class="topHeader wordsListHeader">
+							<h1 data-l10n-id="index">Alphabetical index</h1>
+						</div>
+						<div id="main3Content" class="mainContent">
+                            <!-- Search form, hidden by default -->
+                            <form class="formHidden formSearchInWordsList searchFormHidden" id="searchInWordsListForm">
+                                <p>
+                                    <label data-l10n-id="begin" for="beginSearch">Begin with</label><input type="text" id="beginSearch" placeholder="es" required>
+                                </p>
+                                <p>
+                                    <label data-l10n-id="contain" for="containSearch">Contain &nbsp;<span data-l10n-id="containExplanation">(chunks in order separated by spaces)</span></label><input type="text" id="containSearch" placeholder="clei mas" required>
+                                </p>
+                                <p>
+                                    <label data-l10n-id="end" for="endSearch">End with</label><input type="text" id="endSearch" placeholder="deo" required>
+                                </p>
+                                <p class="buttonsSearchInWordsListForm">
+                                    <button class="danger" role="button" type="reset" data-l10n-id="clear" onclick="clearSearchInWordsList();">Clear Search</button>
+                                    <button class="recommend" role="button" type="submit" disabled="disabled" onclick="return searchInWordsList();" data-l10n-id="search" id="searchInWordsListButton">Search</button>
+                                </p>
+                            </form>
+                            <div class="hidden" id="searchedPanel"></div>
+                            <section id="wordsList" data-type="list"></section>
+                            <nav id="scrollWordsList" data-type="scrollbar">
+                                <ol>
+                                  <li class="searchButtonScrollbar">
+                                      <a id="searchIconLink" href="#" onclick="return showOrHideSearchBars();">
+                                          <span class="pack-icon-search">Search</span>
+                                      </a>
+                                  </li>  
+                                  <li><a href="#letA" onclick="return focusLetter('A');">A</a></li>
+                                  <li><a href="#letB" onclick="return focusLetter('B');">B</a></li>
+                                  <li><a href="#letC" onclick="return focusLetter('C');">C</a></li>
+                                  <li><a href="#letD" onclick="return focusLetter('D');">D</a></li>
+                                  <li><a href="#letE" onclick="return focusLetter('E');">E</a></li>
+                                  <li><a href="#letF" onclick="return focusLetter('F');">F</a></li>
+                                  <li><a href="#letG" onclick="return focusLetter('G');">G</a></li>
+                                  <li><a href="#letH" onclick="return focusLetter('H');">H</a></li>
+                                  <li><a href="#letI" onclick="return focusLetter('I');">I</a></li>
+                                  <li><a href="#letJ" onclick="return focusLetter('J');">J</a></li>
+                                  <li><a href="#letK" onclick="return focusLetter('K');">K</a></li>
+                                  <li><a href="#letL" onclick="return focusLetter('L');">L</a></li>
+                                  <li><a href="#letM" onclick="return focusLetter('M');">M</a></li>
+                                  <li><a href="#letN" onclick="return focusLetter('N');">N</a></li>
+                                  <li><a href="#letÑ" onclick="return focusLetter('Ñ');">Ñ</a></li>
+                                  <li><a href="#letO" onclick="return focusLetter('O');">O</a></li>
+                                  <li><a href="#letP" onclick="return focusLetter('P');">P</a></li>
+                                  <li><a href="#letQ" onclick="return focusLetter('Q');">Q</a></li>
+                                  <li><a href="#letR" onclick="return focusLetter('R');">R</a></li>
+                                  <li><a href="#letS" onclick="return focusLetter('S');">S</a></li>
+                                  <li><a href="#letT" onclick="return focusLetter('T');">T</a></li>
+                                  <li><a href="#letU" onclick="return focusLetter('U');">U</a></li>
+                                  <li><a href="#letV" onclick="return focusLetter('V');">V</a></li>
+                                  <li><a href="#letW" onclick="return focusLetter('W');">W</a></li>
+                                  <li><a href="#letX" onclick="return focusLetter('X');">X</a></li>
+                                  <li><a href="#letY" onclick="return focusLetter('Y');">Y</a></li>
+                                  <li><a href="#letZ" onclick="return focusLetter('Z');">Z</a></li>
+                                </ol>
+                              </nav>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- About -->
+            <form id="about" class="hidden" role="dialog" data-type="confirm">
+                <section>
+                    <h1 data-l10n-id="about">About RAEfox</h1>
+                    <p id="about_content" data-l10n-id="about_content"></p>
+					<p id="about_greetings" data-l10n-id="about_greetings"></p>
+                    <p id="version"><span data-l10n-id="version">Version</span> 1.0</p>
+                    <p id="autor"><span data-l10n-id="author">Author</span>Marcos Martín Pozo Delgado</p>
+                </section>
+                <menu>
+                    <button class="uniqueButton" id="closeAbout" data-l10n-id="close">Close</button>
+                </menu>
+            </form>
+            
+            <!-- Themes -->
+            <form id="themes" class="hidden" role="dialog" data-type="confirm"></form>
+            
+            <!-- Confirm remove selected -->
+            <form id="removeSelectedConfirm" class="hidden" role="dialog" data-type="confirm">
+                <section>
+                    <h1 data-l10n-id="confirmation">Confirmation</h1>
+                    <p data-l10n-id="confirmRemoveSelected">Are you sure you want to remove selected entries?</p>
+                </section>
+                <menu>
+                    <button onclick="document.getElementById('removeSelectedConfirm').className = 'hidden';" type="button" data-l10n-id="cancel">Cancel</button>
+                    <button onclick="removeHistorySelected();" type="button" data-l10n-id="remove" class="danger">Remove</button>
+                </menu>
+            </form>
+
+            <!-- Confirm remove all -->
+            <form id="removeAllConfirm" role="dialog" class="hidden" data-type="confirm">
+                <section>
+                    <h1 data-l10n-id="confirmation">Confirmation</h1>
+                    <p data-l10n-id="confirmRemoveAll">Are you sure you want to remove ALL entries?</p>
+                </section>
+                <menu>
+                    <button onclick="document.getElementById('removeAllConfirm').className = 'hidden';" type="button" data-l10n-id="cancel">Cancel</button>
+                    <button onclick="removeAllHistoryElements();" type="button" data-l10n-id="remove" class="danger">Remove</button>
+                </menu>
+            </form>
+            
+        </section>
+    </body>
+</html>

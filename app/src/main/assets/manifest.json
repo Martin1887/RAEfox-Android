@@ -1,0 +1,12 @@
+{
+  "name": "RAEfox",
+  "xwalk_app_version": "1.0",
+  "start_url": "index.html#panel1",
+  "xwalk_package_id": "com.xwalk.raefox",
+  "icons": [
+    {
+      "src": "/images/icon_128x128.png",
+      "sizes": "128x128"
+    }
+  ]
+}

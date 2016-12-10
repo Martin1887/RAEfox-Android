@@ -1,0 +1,704 @@
+@blueHeader: rgba(0, 0, 126, 1);
+@blueNav: rgba(0, 0, 87, 1);
+@whiteHeader: #E8E8E8;
+
+body,button {
+    font-family: "Fira Sans" !important;
+}
+button {
+	overflow: hidden !important;
+}
+
+input {
+    font-family: "Fira Sans" !important;
+	outline: none;
+	box-sizing: border-box;
+	color: #111;
+}
+
+form[role="dialog"] section {
+	box-sizing: border-box;
+	overflow-y: auto !important;
+}
+
+label {
+    color: @foreground !important;
+}
+
+section[data-type="sidebar"] > nav > ul > li label {
+	color: #fff !important;
+}
+
+#header {
+    background-color: @blueHeader;
+    color: @whiteHeader !important;
+    button {
+        color: @whiteHeader !important;
+    }
+    h1 {
+        text-align: center;
+        font-weight: 200 !important;
+        font-style: italic;
+    }
+}
+
+.topHeader {
+    background-color: @blueHeader;
+    color: @whiteHeader !important;
+	margin: 0;
+	height: 4.1rem;
+	width: 100%;
+	position: fixed;
+	z-index: 200;
+	
+    h1 {
+        margin: 0;
+		text-align: center;
+		line-height: 3.7rem;
+        font-weight: 500 !important;
+		font-size: 95%;
+		text-transform: uppercase;
+		
+		span {
+			font-size: 80%;
+			vertical-align: middle;
+			margin-left: 0.5rem;
+		}
+    }
+}
+.wordsListHeader {
+	display: none;
+}
+
+.mainDrawer {
+    background-color: @background !important;
+}
+
+form p button[type="reset"] {
+    pointer-events: all !important;
+}
+
+/* This 3 selectors and their rules show select in options properly */
+#opts li {
+    overflow: hidden !important;
+    /* This leaves a bit text-indent */
+    text-indent: 0.5rem !important;
+    a {
+        /* This leaves a bit text-indent */
+        text-indent: 0.5rem !important;
+    }
+}
+
+.spanSelectOptions {
+    width: 92% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    left: 0.5rem !important;
+}
+
+.selectOptions {
+    width: 130% !important;
+    font-size: 90%;
+    -moz-appearance: none !important;
+    border: none !important;
+    background-color: transparent;
+    background-image: none;
+    text-indent: -0.2rem;
+    text-overflow: '' !important;
+    overflow: hidden !important;
+}
+
+.labelOptions {
+    font-size: 87% !important;
+}
+
+.switchInOptions {
+    line-height: 4.35rem !important;
+    label {
+        width: 92% !important;
+        height: 100% !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        text-indent: 0 !important;
+        input, span {
+            text-indent: 0 !important;
+        }
+    }
+}
+
+/* tabs content have to be below header */
+.bb-tablist .bb-tabpanel {
+    top: 4.7rem;
+}
+
+.allwaysHeaderContent {
+	height: ~"calc(100% - 8.1rem)" !important;
+	top: 4.1rem;
+}
+.withoutNavigation {
+	height: ~"calc(100% - 4.2rem)";
+}
+
+
+#main1 {
+	overflow: hidden;	
+}
+
+.mainContent {
+    background-color: @background;
+    color: @foreground;
+    width: 100%;
+	height: 100%;
+    position: absolute;
+    a {
+        color: @links !important;
+    }
+    /* scroll */
+    nav[data-type="scrollbar"] {
+        position: fixed;
+        top: 4.65rem;
+		bottom: 4.5rem;
+        
+        ol {
+			padding: 0 0 0.2rem 0;
+			
+			li a {
+				color: @foreground !important;
+			}
+		}
+    }
+    
+    /* onlywords list (not history list) */
+    #wordsList {
+        width: ~"calc(100% - 28px)";
+    }
+	
+	.historyListEditMode {
+		height: ~"calc(100% - 9.5rem) !important";
+	}
+    
+    /* list */
+    section[data-type="list"] {
+        height: 100%;
+		overflow: auto;
+		
+		header {
+            color: @listsHeader;
+            border-bottom-color: @listsHeader;
+			margin-bottom: 10px;
+        
+			a {
+				color: @listsHeader !important;
+				border-bottom-color: @listsHeader;
+				text-decoration: none;
+				width: 100%;
+				display: inline-block;
+			}
+		}
+        ul li {
+            height: auto;
+            a {
+                height: auto;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: 0;
+                cursor: pointer;
+                color: @links !important;
+            }
+        }
+    }
+    .active[data-type="list"] li:active:after, .active[data-type="list"] li:hover:after,
+    [data-type="list"] li > a:active:after, [data-type="list"] li > a:hover:after {
+        background-color: @linksBackground;
+    }
+}
+
+.leftIcons {
+    float: left !important;
+    button:disabled {
+        background: inherit !important;
+    }
+}
+
+.historyButton {
+    float: right;
+    /*font-size: 70% !important;*/
+    /* buttons.css style to override toolbars.css style */
+    position: absolute !important;
+    width: auto !important;
+    height: 3.5rem !important;
+    top: 0.15rem !important;
+    right: 0 !important;
+    -moz-box-sizing: border-box !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    font-weight: 500 !important;
+    font-size: 80% !important;
+    line-height: 3.8rem !important;
+    text-align: center !important;
+    text-shadow: 0.1rem 0.1rem 0 rgba(255,255,255,0.3) !important;
+    text-decoration: none !important;
+    outline: none !important;
+    background-repeat: repeat !important;
+    background-attachment: inherit !important;
+    background-position: inherit !important;
+    background-clip: inherit !important;
+    background-origin: inherit !important;
+    background-size: inherit !important;
+}
+
+.ulHistory {
+    padding: 0 !important;
+    overflow: hidden !important;
+	margin-bottom: 20px !important;
+}
+
+.checkHistory {
+    height: 2.5rem !important;
+    width: 4rem !important;
+}
+
+.hiddenCheckHistory {
+    left: -2.5rem !important;;
+    width: 1.5rem !important;
+}
+
+/* Toolbar is upper because they are tabs and tabs cannot be at top because there is search */
+#iframeNavigation {
+    bottom: 4.5rem !important;
+    background-color: @blueNav !important;
+	z-index: 1000;
+}
+
+#searchForm {
+    top: 5rem;
+    position: fixed;
+    width: 100%;
+    z-index: 15;
+}
+
+.suggestionsUl {
+	position: absolute;
+	list-style: none;
+	background-color: @background;
+	color: @foreground;
+	border: 1px solid @foreground;
+	border-top-width: 0;
+	top: 4rem;
+	left: 2rem;
+	width: ~"calc(100% - 10.5rem)";
+	overflow-y: auto;
+	max-height: ~"calc(100% - 8.5rem)";
+	z-index: 1;
+	filter: brightness(0.8);
+	
+	li {
+		background-color: @background;
+		line-height: 2rem;
+		padding: 1rem;
+		cursor: pointer;
+		text-overflow: clip;
+		overflow: hidden;
+		font-size: 90%;
+	}
+	
+	li:hover {
+		filter: brightness(1.8);
+	}
+	li.cursorIn {
+		filter: brightness(1.8);
+	}
+}
+.suggestionsUlShown {
+    animation-duration: 1s;
+    animation-name: showDown;
+}
+
+.definitionsContainer {
+	height: 100%;
+	box-sizing: border-box;
+	overflow-y: auto;
+	
+	p {
+		padding: 10px 25px;
+		margin-top: 0;
+		font-size: 85%;
+	}
+	h1 {
+		padding: 0 25px;
+		font-weight: 500;
+	}
+}
+.definitions {
+    height: auto !important;
+	animation-duration: 1s;
+    animation-name: showDown;
+}
+.definitionWord {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.darkTabList {
+    background: none repeat scroll 0% 0% rgba(26, 26, 26, 1) !important;
+}
+
+.tabIcon i {
+    font-size: 120%;
+}
+.bb-tablist > li > a, .bb-tablist > li > button {
+    color: @whiteHeader;
+}
+
+.hidden {
+    display: none;
+}
+
+.uniqueButton {
+    width: 100% !important;
+}
+
+#about p {
+    font-size: 70%;
+}
+#about_greetings {
+	border-top: none !important;
+}
+
+.letterHidden {
+    display: none;
+    height: 0;
+}
+.letterShown {
+    animation-duration: 2s;
+    animation-name: showDown;
+	overflow-y: hidden !important;
+}
+
+header a {
+	outline: none !important;
+}
+
+#progressWordsList {
+    background: url('BB/style/progress_activity/images/ui/default.png') no-repeat center center / 100% auto;
+	animation: 0.9s rotate infinite steps(30);
+	width: 2.9rem;
+	height: 2.9rem;
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	
+	left: ~"calc(50% - 16px)";
+	top: ~"calc(50% - 16px)";
+	z-index: 400;
+    visibility: visible;
+	position: fixed !important;
+}
+
+.formHidden {
+    display: none;
+}
+
+.formSearchInWordsList {
+    z-index: 1887;
+    position: fixed;
+    overflow: auto;
+	padding: 2rem 15px;
+    width: ~"calc(100% - 58px)";
+    height: ~"calc(100% - 13rem)";
+    background-color: @background;
+    color: @foreground;
+	
+    label {
+        padding-left: 0.2rem;
+        font-size: 68%;
+        span {
+            font-size: 72%;
+            padding-left: 0.5rem;
+        }
+    }
+    input {
+        height: 2.8rem;
+        line-height: 2.8rem;
+        padding: 0px 0.5rem;
+		background-color: @background !important;
+		filter: brightness(0.8);
+		border-color: @foreground !important;
+		color: @foreground !important;
+    }
+	input:invalid {
+		border-color: @foreground !important;
+	}
+    button {
+        width: 49%;
+        padding: 2px;
+        text-align: center;
+        margin-top: 0.5rem;
+        &.recommend {
+            float: right;
+        }
+            
+    }
+    p {
+        line-height: 2.2rem;
+    }
+    p + p {
+        margin-top: 0;
+    }
+	
+	.buttonsSearchInWordsListForm {
+		margin-top: 20px;
+	}
+}
+.searchFormShown {
+	animation-duration: 0.25s;
+	animation-name: searchShow;
+}
+.searchFormHidden {
+    position: fixed;
+	transform: translateX(1000%);
+	animation-duration: 0.25s;
+	animation-name: searchHide;
+}
+
+.searchedPanel {
+    position: static;
+    height: 100%;
+	padding: 0px 1.5rem;
+	animation-name: showDown;
+	animation-duration: 1.25s;
+	overflow: auto;
+    
+    a {
+        height: auto;
+		width: 100%;
+		display: inline-block;
+        position: relative;
+        text-decoration: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+        cursor: pointer;
+        color: @links !important;
+    }
+    a:hover {
+        background-color: @linksBackground;
+    }
+	
+	button {
+		text-align: center;
+	}
+	
+	h1 {
+		font-size: 1.8rem;
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom: 0;
+		margin-top: 1rem;
+	}
+	h2 {
+		font-size: 2rem;
+		font-family: "Fira Mono", monospace;
+		text-align: center;
+		margin-top: 1rem;
+		
+		span {
+			font-family: "Fira Sans", sans-serif;
+			font-size: 90%;
+		}
+	}
+}
+
+.searchButtonScrollbar {
+    height: 6.9% !important;
+	min-height: 3rem;
+
+    span {
+        width: 80% !important;
+		height: 80% !important;
+		background-size: 100% auto !important;
+    }
+}
+
+.searchIconRemarked {
+	span {
+		background-color: @blueHeader !important;
+	}
+}
+
+.lettersNotVisible {
+	li:not(.searchButtonScrollbar) {
+		visibility: hidden !important;
+	}
+	ol {
+		opacity: 1 !important;
+	}
+}
+
+.camaLessForm .camaLessFormEditPanel {
+	position: absolute;
+	top: 0;
+}
+.cp-app {
+	left: 100% !important;
+	transform: translate(-100%);
+	top: 0 !important;
+}
+
+
+
+@keyframes showDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        /* After transition height is set to 100% */
+        max-height: 1000px;
+    }
+}
+
+@keyframes searchShow {
+    from {
+		opacity: 0.2;
+		transform: translate(1000%, 0)/;
+		width: 10% !important;
+		height: 10%;
+		left: 100%;
+	}
+	30% {
+		transform: translate(50%, 0);
+		width: 50% !important;
+		height: 10%;
+	}
+	50% {
+		transform: translate(30%, 0);
+		width: 70% !important;
+		height: 10%;
+	}
+	80% {
+		transform: translate(10%, 0)n;
+		width: 90% !important;
+		height: 10%;
+	}
+	to {
+		top: 0 !important;
+		opacity: 1;
+		border-radius: 0;
+		width: 100% !important;
+		height: 100%;
+		transform: translate(0, 0);
+	}
+}
+@keyframes searchHide {
+    from {
+		top: 0 !important;
+		opacity: 1;
+		border-radius: 0;
+		width: 100% !important;
+		height: 100%;
+		transform: translate(0, 0);
+	}
+	20% {
+		transform: translate(10%, 0);
+		width: 90% !important;
+		height: 10%;
+	}
+	50% {
+		transform: translate(30%, 0);
+		width: 70% !important;
+		height: 10%;
+	}
+	70% {
+		transform: translate(50%, 0);
+		width: 50% !important;
+		height: 10%;
+	}
+	to {
+		opacity: 0.2;
+		transform: translate(90%, 0);
+		width: 10% !important;
+		height: 10%;
+	}
+}
+
+
+@media (min-width: 900px) {
+	#main1 {
+		visibility: visible !important;
+		width: 33.3%;
+	}
+	#searchForm {
+		width: 33.3%;
+	}
+	
+	#main2 {
+		left: 33.3%;
+		width: 33.3%;
+		visibility: visible !important;
+	}
+	#main3 {
+		left: 66.6%;
+		width: 33.3%;
+		visibility: visible !important;
+	}
+	.formSearchInWordsList {
+		width: ~"calc(33.3% - 58px)" !important;
+	}
+	
+	.bb-tablist > li > a {
+		color: @whiteHeader !important;
+		font-weight: 500 !important;
+		background-position: 50% 100% !important;
+	}
+	.bb-tablist > li > a:active {
+		background-color: transparent;
+	}
+	.bb-tablist > li > a:after {
+		display: none !important;
+	}
+	
+	#progressWordsList {
+		left: ~"calc(83% - 16px)";
+	}
+	
+	.topHeader {
+		width: 33.3%;
+	}
+	.wordsListHeader {
+		display: block;
+	}
+	
+	.mainContent {
+		margin-top: 4.1rem;
+		height: ~"calc(100% - 8.1rem)";
+		
+		nav[data-type="scrollbar"] {
+			top: 8.65rem;
+			bottom: 8.5rem;
+			
+			li,a,span {
+				outline: none;
+			}
+		}
+	}
+	.allwaysHeaderContent {
+		margin-top: 0;
+		height: ~"calc(100% - 8.1rem)";
+	}
+	.withoutNavigation {
+		height: ~"calc(100% - 8.1rem)";
+	}
+	
+	.formSearchInWordsList {
+		height: ~"calc(100% - 21.2rem)";
+	}
+	
+	.historyButton {
+		right: 67% !important;
+	}
+}
